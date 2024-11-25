@@ -1,7 +1,8 @@
 # Chat Application
 
 Live :- https://kuvaka-task-nakshatra.netlify.app/
-hosted api base URL:- https://kuvaka-assignment-pge7.onrender.com
+
+Hosted api base URL:- https://kuvaka-assignment-pge7.onrender.com
 
 This is sole project done by me(Nakshatra Trivedi)!
 
@@ -9,6 +10,8 @@ This repository contains a **real-time chat application** built using **Node.js*
 
 - **client/**: The ReactJS-based frontend.
 - **server/**: The Node.js backend with Socket.IO for real-time communication.
+
+I've tried following this structure:  Models, Controller, Services , routes and config.
 
 ## Features
 
