@@ -35,7 +35,7 @@ const Chat = () => {
         .get(`https://kuvaka-assignment-pge7.onrender.com/api/chat/chats/${room}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => {
+        .then((res) => {
           setMessages(res.data);
         })
         .catch((err) => console.error("Error fetching chat history:", err));
@@ -44,7 +44,7 @@ const Chat = () => {
 
   const register = async () => {
     try {
-      const res = await axios.post("https://kuvaka-assignment-pge7.onrender.com/api/auth/register", {
+      await axios.post("https://kuvaka-assignment-pge7.onrender.com/api/auth/register", {
         username,
         password,
       });
@@ -54,7 +54,7 @@ const Chat = () => {
       alert("Registration failed. Try again.");
     }
   };
-
+  
   const login = async () => {
     try {
       const res = await axios.post("https://kuvaka-assignment-pge7.onrender.com/api/auth/login", {
