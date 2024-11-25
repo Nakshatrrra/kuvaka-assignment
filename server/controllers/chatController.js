@@ -1,4 +1,6 @@
-let users = {};
+const Chat = require('../models/Chat');
+
+let users = {}; 
 
 const joinRoom = (socket, { username, room }) => {
     if (!users[room]) {
@@ -15,9 +17,23 @@ const joinRoom = (socket, { username, room }) => {
     socket.to(room).emit('message', { user: 'System', text: `${username} has joined the room.` });
 };
 
-const sendMessage = (socket, { user, text, room }) => {
-    socket.to(room).emit('message', { user, text });
-    socket.emit('message', { user, text });
+const sendMessage = async (socket, { user, text, room }) => {
+    const chat = new Chat({ username: user, message: text, room });
+    await chat.save(); 
+    const messageData = { username: user, message: text };
+    socket.to(room).emit('message', messageData); 
+    socket.emit('message', messageData); 
+};
+
+const getChats = async (req, res) => {
+    const { room } = req.params;
+
+    try {
+        const chats = await Chat.find({ room }).sort({ timestamp: 1 });
+        res.json(chats);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to fetch chats', details: err.message });
+    }
 };
 
 const userDisconnected = (socket) => {
@@ -31,5 +47,6 @@ const userDisconnected = (socket) => {
 module.exports = {
     joinRoom,
     sendMessage,
-    userDisconnected
+    userDisconnected, 
+    getChats,
 };
