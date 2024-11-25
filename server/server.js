@@ -9,7 +9,6 @@ const authRoutes = require('./routes/auth');
 const chatRoutes = require('./routes/chat');
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +21,6 @@ app.use('/api/chat', chatRoutes);
 const server = http.createServer(app);
 socketSetup(server);
 
-server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+server.listen(process.env.PORT, () => {
+    console.log(`Server running on ${process.env.PORT}`);
 });
