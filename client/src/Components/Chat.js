@@ -35,7 +35,7 @@ const Chat = () => {
         .get(`https://kuvaka-assignment-pge7.onrender.com/api/chat/chats/${room}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => {
+        .then(() => {
           setMessages(res.data);
         })
         .catch((err) => console.error("Error fetching chat history:", err));
