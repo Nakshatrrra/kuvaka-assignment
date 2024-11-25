@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require('cors');
 const { socketSetup } = require('./socket');
 const connectDB = require('./config/db');
+require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 const chatRoutes = require('./routes/chat');
