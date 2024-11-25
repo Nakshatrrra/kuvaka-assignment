@@ -88,24 +88,29 @@ const Chat = () => {
     <div className="chat-container">
       {!token ? (
         <div className="auth-container">
+        <div className="auth-card">
           <h2>User Authentication</h2>
-          <input
-            type="text"
-            placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="auth-inputs">
+            <input
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
           <div className="auth-buttons">
             <button onClick={register}>Register</button>
             <button onClick={login}>Login</button>
           </div>
         </div>
+      </div>
+      
       ) : !joined ? (
         <div className="join-container">
           <h2>Join a Chat Room</h2>

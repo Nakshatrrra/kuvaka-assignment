@@ -21,6 +21,8 @@ app.use('/api/chat', chatRoutes);
 const server = http.createServer(app);
 socketSetup(server);
 
-server.listen(process.env.PORT, () => {
-    console.log(`Server running on ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000; 
+server.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
 });
+
