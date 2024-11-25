@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import "./Chat.css";
 
-const socket = io("http://localhost:3000"); 
+const socket = io("https://kuvaka-assignment-pge7.onrender.com/"); 
 
 const Chat = () => {
   const [username, setUsername] = useState("");
@@ -32,7 +32,7 @@ const Chat = () => {
   useEffect(() => {
     if (room && token) {
       axios
-        .get(`http://localhost:3000/api/chat/chats/${room}`, {
+        .get(`https://kuvaka-assignment-pge7.onrender.com/api/chat/chats/${room}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -44,7 +44,7 @@ const Chat = () => {
 
   const register = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/register", {
+      const res = await axios.post("https://kuvaka-assignment-pge7.onrender.com/api/auth/register", {
         username,
         password,
       });
@@ -57,7 +57,7 @@ const Chat = () => {
 
   const login = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/login", {
+      const res = await axios.post("https://kuvaka-assignment-pge7.onrender.com/api/auth/login", {
         username,
         password,
       });
