@@ -14,7 +14,7 @@ const joinRoom = (socket, { username, room }) => {
 
     socket.emit('userList', users[room]);
 
-    socket.to(room).emit('message', { user: 'System', text: `${username} has joined the room.` });
+    socket.to(room).emit('message', { username: 'System', message: `${username} has joined the room.` });
 };
 
 const sendMessage = async (socket, { user, text, room }) => {
