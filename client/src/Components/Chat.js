@@ -18,6 +18,7 @@ const Chat = () => {
   useEffect(() => {
     if (joined) {
       socket.on("message", (data) => {
+        // console.log("Received message data:", data);  
         setMessages((prevMessages) => [...prevMessages, data]);
       });
 
